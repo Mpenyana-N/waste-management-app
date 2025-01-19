@@ -2,6 +2,7 @@ package com.enviro.assesment.grad001.nickmpenyana.waste_management_app.controlle
 
 import com.enviro.assesment.grad001.nickmpenyana.waste_management_app.entity.RecyclingTipsEntity;
 import com.enviro.assesment.grad001.nickmpenyana.waste_management_app.service.RecyclingTipService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,13 +29,13 @@ public class RecyclingTipsController {
       return   recyclingTipService.getTip(id);
     }
 
-    @PostMapping("/createTip")
-    public ResponseEntity<RecyclingTipsEntity> createTip(@RequestBody RecyclingTipsEntity recyclingTipsEntity) {
+    @PostMapping("/create")
+    public ResponseEntity<RecyclingTipsEntity> createTip(@Valid @RequestBody RecyclingTipsEntity recyclingTipsEntity) {
         return ResponseEntity.status(HttpStatus.CREATED).body(recyclingTipService.createTip(recyclingTipsEntity));
     }
 
     @PutMapping("/update/{id}")
-    public RecyclingTipsEntity updateTip(@PathVariable UUID id, @RequestBody RecyclingTipsEntity recyclingTipsEntity) {
+    public RecyclingTipsEntity updateTip(@PathVariable UUID id, @Valid @RequestBody RecyclingTipsEntity recyclingTipsEntity) {
         return recyclingTipService.updateTip(id, recyclingTipsEntity);
     }
 

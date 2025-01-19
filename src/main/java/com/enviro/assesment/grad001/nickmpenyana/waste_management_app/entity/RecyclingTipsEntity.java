@@ -1,6 +1,7 @@
 package com.enviro.assesment.grad001.nickmpenyana.waste_management_app.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
@@ -11,16 +12,14 @@ public class RecyclingTipsEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
 
     private UUID id;
-    private String name;
+    @NotBlank(message = "Title is required")
+    private String title;
+    @NotBlank(message = "Tip is required")
     private String tip;
 
     public RecyclingTipsEntity() {
     }
 
-    public RecyclingTipsEntity(String name, String tip) {
-        this.name = name;
-        this.tip = tip;
-    }
 
     public UUID getId() {
         return id;
@@ -30,12 +29,12 @@ public class RecyclingTipsEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public String getTip() {

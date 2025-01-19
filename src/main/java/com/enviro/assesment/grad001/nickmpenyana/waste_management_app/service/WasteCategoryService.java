@@ -28,8 +28,18 @@ public class WasteCategoryService {
         return repository.save(category);
     }
 
-    public WasteCategory updateCategory(UUID id) {
-       WasteCategory category = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Category not found with id: " + id));
+    public WasteCategory updateCategory(UUID id, WasteCategory category) {
+        if (!repository.existsById(id)) {
+            throw  new EntityNotFoundException("Category not found with id: " + id);
+        }
+        category.setId(id);
         return repository.save(category);
+    }
+
+    public void deleteCategory(UUID id, WasteCategory category) {
+        if (!repository.existsById(id)) {
+            throw  new EntityNotFoundException("Category not found with id: " + id);
+        }
+        repository.delete(category);
     }
 }

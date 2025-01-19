@@ -29,7 +29,7 @@ public class DisposalGuidelinesController {
         return guidelinesService.getGuideline(id);
     }
 
-    @PostMapping("/createGuideline")
+    @PostMapping("/create")
     public ResponseEntity<DisposalGuidelinesEntity> createGuideline(@Valid @RequestBody DisposalGuidelinesEntity guidelinesEntity) {
         return ResponseEntity.status(HttpStatus.CREATED).body(guidelinesService.createGuidelines(guidelinesEntity));
     }

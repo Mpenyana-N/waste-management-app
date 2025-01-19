@@ -34,6 +34,7 @@ public class RecyclingTipService {
         if (!recyclingTipRepository.existsById(id)) {
             throw new EntityNotFoundException("Tip not found with id: " + id);
         }
+        recyclingTipsEntity.setId(id);
         return recyclingTipRepository.save(recyclingTipsEntity);
     }
 

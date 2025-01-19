@@ -1,6 +1,8 @@
 package com.enviro.assesment.grad001.nickmpenyana.waste_management_app.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
@@ -12,13 +14,13 @@ public class WasteCategory {
     @GeneratedValue(strategy = GenerationType.UUID)
 
     private UUID id;
+    @NotBlank(message = "Name is required")
+    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters")
     private String name;
+    @NotBlank(message = "Description is required")
     private String description;
 
-    public WasteCategory(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
+
 
     public WasteCategory() {
 
